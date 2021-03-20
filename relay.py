@@ -24,5 +24,13 @@ for pin in GPIOPin:
 time.sleep(1)
 print('GPIOs Initiated.')
 
-#%% Read relay configurations
+#%% Schedule
 
+try:
+    while True:
+        turn_on(GPIOPin[0])
+        time.sleep(10)
+        turn_off(GPIOPin[0])
+except KeyboardInterrupt():
+    print('Stopping process')
+    GPIO.cleanup()
