@@ -3,13 +3,13 @@ import time
 import json
 
 #%% Switch function definitions
-def turn_on(pin):
+def turn_on(pin, deviceName = ''):
     GPIO.output(pin, GPIO.LOW)
-    print('Turned On')
+    print([deviceName,'Turned On'])
 
-def turn_off(pin):
+def turn_off(pin, deviceName = ''):
     GPIO.output(pin, GPIO.HIGH)
-    print('Turned Off')
+    print([deviceName,'Turned Off'])
 
 #%% Load config file
 
@@ -30,14 +30,17 @@ print('GPIOs Initiated.')
 
 #%% Schedule
 
+relayNumber = 1
+GPIOPins = relayConfig['GPIOPins']
+
 try:
     while True:
-        turn_on(GPIOPin[0])
+        turn_on(GPIOPins[relayNumber - 1])
         time.sleep(10)
-        turn_off(GPIOPin[0])
+        turn_off(GPIOPins[relayNumber - 1])
         time.sleep(10)
 except KeyboardInterrupt:
     print('Stopping process')
-    turn_off(GPIOPin[0])
+    turn_off(GPIOPin[GPIOPins[relayNumber - 1]])
     time.sleep(1)
     GPIO.cleanup()
