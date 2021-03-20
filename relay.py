@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import json
 
 #%% Switch function definitions
 def turn_on(pin):
@@ -10,15 +11,18 @@ def turn_off(pin):
     GPIO.output(pin, GPIO.LOW)
     print('Turned Off')
 
-#%% Initialization
-relayPin = [1] #Enter the relay pins being used
-GPIOPin = [27] #Enter corresponding GPIO pin numbers
+#%% Load config file
 
-print('Relay and GPIO pins mapped.')
+relayConfigFile = open('relayconfig.json')
+relayConfig = json.load(relayConfigFile)
+
+print('Relay Configurations Loaded')
+
+#%% Initialization
 
 GPIO.setmode(GPIO.BCM)
 
-for pin in GPIOPin:
+for pin in relayConfig['GPIOPins']:
 	GPIO.setup(pin, GPIO.OUT)
 
 time.sleep(1)
@@ -35,5 +39,5 @@ try:
 except KeyboardInterrupt:
     print('Stopping process')
     turn_off(GPIOPin[0])
-    time.sleep(5)
+    time.sleep(1)
     GPIO.cleanup()
