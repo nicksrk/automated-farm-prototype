@@ -1,5 +1,5 @@
 {
-  "activeRelayPins": [1],
-  "GPIOPins": [27],
-  "DeviceName": ["Water Pump"]
+  "activeRelayPins": [1, 2, 3, 4],
+  "GPIOPins": [17, 18, 27, 22],
+  "DeviceName": ["Water Pump", "Light", "Air Compressor", "Hyproponic Pump"]
 }
