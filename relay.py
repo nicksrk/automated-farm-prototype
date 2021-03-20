@@ -5,11 +5,11 @@ import json
 #%% Switch function definitions
 def turn_on(pin, deviceName = ''):
     GPIO.output(pin, GPIO.LOW)
-    print([deviceName,'Turned On'])
+    print(deviceName+'Turned On')
 
 def turn_off(pin, deviceName = ''):
     GPIO.output(pin, GPIO.HIGH)
-    print([deviceName,'Turned Off'])
+    print(deviceName+'Turned Off')
 
 #%% Load config file
 
@@ -41,6 +41,6 @@ try:
         time.sleep(10)
 except KeyboardInterrupt:
     print('Stopping process')
-    turn_off(GPIOPin[GPIOPins[relayNumber - 1]])
+    turn_off([GPIOPins[relayNumber - 1]])
     time.sleep(1)
     GPIO.cleanup()
