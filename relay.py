@@ -3,11 +3,11 @@ import time
 
 #%% Switch function definitions
 def turn_on(pin):
-    GPIO.output(pin, GPIO.HIGH)
+    GPIO.output(pin, GPIO.LOW)
     print('Turned On')
 
 def turn_off(pin):
-    GPIO.output(pin, GPIO.LOW)
+    GPIO.output(pin, GPIO.HIGH)
     print('Turned Off')
 
 #%% Initialization
