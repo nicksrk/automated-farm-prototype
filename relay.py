@@ -34,4 +34,5 @@ try:
         time.sleep(10)
 except KeyboardInterrupt:
     print('Stopping process')
+    turn_off(GPIOPin[0])
     GPIO.cleanup()
